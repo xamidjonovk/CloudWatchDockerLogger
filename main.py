@@ -1,6 +1,5 @@
 import argparse
 import logging
-import time
 from cloudwatch_logger import CloudWatchLogger
 from docker_runner import DockerRunner
 
@@ -41,8 +40,7 @@ def main():
         return
 
     try:
-        docker_runner.stream_docker_logs_to_cloudwatch(container_id, cloudwatch_logger, args.aws_cloudwatch_group,
-                                                       args.aws_cloudwatch_stream)
+        docker_runner.stream_docker_logs_to_cloudwatch(container_id, cloudwatch_logger, args.aws_cloudwatch_group, args.aws_cloudwatch_stream)
     except KeyboardInterrupt:
         logger.warning("Interrupted by user")
     finally:
